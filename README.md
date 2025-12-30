@@ -1,84 +1,65 @@
-# Movie Recommendation System
+# AI Movie Recommendation System
 
-This project implements a movie recommendation system using the MovieLens dataset with collaborative filtering, content-based filtering, and hybrid approaches.
+## 🚀 Overview
 
-## Project Structure
+This project implements a comprehensive movie recommendation system using the MovieLens dataset. It explores various recommendation techniques including collaborative filtering, content-based filtering, and hybrid approaches to provide personalized movie suggestions. The system includes a Flask-based web interface for users to interact with the recommendations and visualize the underlying data.
 
-- `download_data.py`: Downloads the MovieLens dataset
-- `data_processing.py`: Data loading and preprocessing functions
-- `recommendation_models.py`: Recommendation algorithms implementation
-- `evaluation.py`: Metrics for evaluating recommendation quality
-- `main.py`: Main script to run the recommendation system
-- `visualization.py`: Functions to visualize recommendations and metrics
-- `parameter_tuning.py`: Functions to optimize model parameters
-- `web_interface.py`: Simple web interface for the recommendation system
-- `improve_content_filtering.py`: Enhanced content-based filtering with text analysis
+## 🧠 Tech Stack
 
-## Setup and Running
+- **Core**: Python, Flask
+- **Data Processing**: Pandas, NumPy
+- **Machine Learning**: scikit-Learn, SciPy
+- **Visualization**: Matplotlib, Seaborn
 
-1. **Download Models**:
-   These files were too big to put in the repo directly so you need to download them from gogle drive then save then in a folder together - 'models' - like i have!
+## 📊 Features
 
+- **Collaborative Filtering**: Recommends movies based on user similarity patterns and past ratings.
+- **Content-Based Filtering**: Suggests movies with similar attributes (genres, tags) to what a user likes.
+- **Hybrid Recommendation**: Combines collaborative and content-based methods to overcome limitations like the cold-start problem.
+- **Interactive Web UI**: A user-friendly interface to get recommendations by user ID or movie title.
+- **Data Visualization**: Tools to analyze rating distributions, user activity, and model performance metrics.
+
+## 📈 Results
+
+The models were evaluated using standard metrics like Hit Rate and Precision@k:
+
+- **Collaborative Filtering**: Achieved ~78% hit rate and ~0.22 precision@10.
+- **Hybrid Model**: Achieved ~74% hit rate and ~0.23 precision@10.
+
+## 🧪 How to Run
+
+1. **Clone the repository**
+
+   ```bash
+   git clone https://github.com/AhmedIkram05/movie-recommendation-system.git
+   cd movie-recommendation-system
    ```
-   https://drive.google.com/drive/folders/1FI-9q4vY10FzzwRcWKqNINUWckav44g5?usp=share_link
-   ```
 
-2. **Install dependencies**:
+2. **Install dependencies**
 
-   ```
+   ```bash
    pip install -r requirements.txt
    ```
 
-3. **Download the dataset**:
+3. **Download Data & Train Models**
+   You can do this in one step using the runner script:
 
-   ```
-   python3 download_data.py
-   ```
-
-4. **Run the recommendation system**:
-
-   ```
-   python3 main.py
+   ```bash
+   python run.py --download --train
    ```
 
-5. **Save trained models for web interface**:
+   *Note: This will download the MovieLens dataset and train the models, saving them to the `models/` directory.*
 
-   ```
-   python3 save_models.py
-   ```
+4. **Run the Web Interface**
 
-6. **Run the web interface**:
-
-   ```
-   python3 web_interface.py
+   ```bash
+   python run.py --web
    ```
 
-   Then open <http://localhost:5000> in your browser
+   Open your browser and navigate to `http://localhost:8080` to use the recommender.
 
-## Performance
+## 🛠️ Advanced Usage
 
-The current implementation achieves:
-
-- Collaborative Filtering: ~78% hit rate, ~0.22 precision@10
-- Hybrid Model: ~74% hit rate, ~0.23 precision@10
-
-## Recommendation Approaches
-
-1. **Collaborative Filtering**: Recommends movies based on user similarity
-2. **Content-Based Filtering**: Recommends movies based on content features
-3. **Hybrid Approach**: Combines both methods for better recommendations
-
-## Evaluation Metrics
-
-The system uses standard recommendation metrics:
-
-- Precision@k: Proportion of recommended items that are relevant
-- Recall@k: Proportion of relevant items that are recommended
-
-## Future Improvements
-
-- Use more advanced matrix factorization techniques
-- Incorporate temporal dynamics in user preferences
-- Add deep learning models for recommendation
-- Implement A/B testing framework
-- Deploy as a microservice
+- **Evaluate Models**: `python run.py --evaluate`
+- **Generate Visualizations**: `python run.py --visualize`
+- **Clean Temporary Files**: `python run.py --clean`
