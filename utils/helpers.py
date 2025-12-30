@@ -1,6 +1,7 @@
 import os
 import logging
 import pickle
+import shutil
 
 def setup_logging(log_file='logs/recommendation_system.log'):
     """Set up logging configuration."""
