@@ -2,7 +2,8 @@ import pandas as pd
 import numpy as np
 import os
 from sklearn.model_selection import train_test_split
-from download_data import download_movielens_dataset
+from src.recommender.utils import download_movielens_dataset
+
 
 def load_data(data_path='data/ml-latest-small'):
     """

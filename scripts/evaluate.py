@@ -3,9 +3,9 @@ import sys
 # Try to import dependencies and provide helpful message if missing
 try:
     import pandas as pd
-    from data_processing import load_data, prepare_data, get_movie_features
-    from recommendation_models import CollaborativeFiltering, ContentBasedFiltering, HybridRecommender
-    from evaluation import evaluate_recommendations
+    from src.recommender.data import load_data, prepare_data, get_movie_features
+    from src.recommender.models import CollaborativeFiltering, ContentBasedFiltering, HybridRecommender
+    from src.recommender.evaluation import evaluate_recommendations
 except ImportError as e:
     print(f"Error importing dependencies: {e}")
     print("Please install required dependencies with:")
@@ -91,7 +91,7 @@ def main():
     
     # Store metrics for visualization
     try:
-        from visualization import plot_model_comparison, plot_rating_distribution, plot_user_activity
+        from src.recommender.visualization import plot_model_comparison, plot_rating_distribution, plot_user_activity
         
         # Create visualizations
         print("\nGenerating visualizations...")

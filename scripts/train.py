@@ -1,8 +1,8 @@
 import pickle
 import os
-from data_processing import load_data, prepare_data, get_movie_features
-from recommendation_models import CollaborativeFiltering, HybridRecommender
-from parameter_tuning import tune_collaborative_filtering, tune_hybrid_weights
+from src.recommender.data import load_data, prepare_data, get_movie_features
+from src.recommender.models import CollaborativeFiltering, HybridRecommender
+from src.recommender.tuning import tune_collaborative_filtering, tune_hybrid_weights
 
 def main():
     print("Training and saving recommendation models...")

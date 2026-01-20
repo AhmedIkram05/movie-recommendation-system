@@ -19,7 +19,7 @@ def load_models():
         os.makedirs('models', exist_ok=True)
         
         if not os.path.exists('models/cf_model.pkl') or not os.path.exists('models/hybrid_model.pkl'):
-            print("Model files don't exist. Please run 'python save_models.py' first")
+            print("Model files don't exist. Please run 'python -m scripts.train' first")
             return False
             
         with open('models/cf_model.pkl', 'rb') as f:
@@ -33,7 +33,7 @@ def load_models():
         return True
     except Exception as e:
         print(f"Error loading models: {e}")
-        print("Please run 'python save_models.py' first")
+        print("Please run 'python -m scripts.train' first")
         return False
 
 
@@ -44,7 +44,7 @@ def index():
     if movies_df is None:
         if not load_models():
             return render_template('error.html', 
-                                  error="Models not loaded. Please run 'python save_models.py' first.")
+                                  error="Models not loaded. Please run 'python -m scripts.train' first.")
     
     # Get a sample of movie titles for the UI
     sample_movies = movies_df.sample(min(50, len(movies_df)))[['movieId', 'title']].to_dict('records')
@@ -56,7 +56,7 @@ def api_recommend():
     # Ensure models are loaded
     if cf_model is None or hybrid_model is None:
         if not load_models():
-            return jsonify({"error": "Models not loaded. Run 'python save_models.py' first"}), 500
+            return jsonify({"error": "Models not loaded. Run 'python -m scripts.train' first"}), 500
     
     try:
         data = request.json
@@ -88,7 +88,7 @@ def api_recommend():
         if movie_id:
             try:
                 movie_id = int(movie_id)
-                from recommendation_models import ContentBasedFiltering
+                from src.recommender.models import ContentBasedFiltering
                 cb_model = ContentBasedFiltering()
                 cb_model.fit(get_movie_features(movies_df), movies_df)
                 
@@ -109,7 +109,7 @@ def api_recommend():
 
 # Helper function
 def get_movie_features(movies):
-    from data_processing import get_movie_features
+    from src.recommender.data import get_movie_features
     return get_movie_features(movies)
 
 @app.route('/favicon.ico')

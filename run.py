@@ -24,30 +24,30 @@ def main():
     
     # Set up project structure if requested
     if args.setup:
-        subprocess.run([sys.executable, "setup_project.py"])
+        subprocess.run([sys.executable, "-m", "scripts.setup"])
     
     # Clean cache files if requested
     if args.clean:
-        from utils.helpers import clean_cache_files
+        from src.recommender.utils import clean_cache_files
         clean_cache_files()
     
     if args.download or args.all:
         print("Downloading dataset...")
-        subprocess.run([sys.executable, "download_data.py"])
+        subprocess.run([sys.executable, "-m", "scripts.download"])
     
     if args.train or args.all:
         print("Training and saving models...")
-        subprocess.run([sys.executable, "save_models.py"])
+        subprocess.run([sys.executable, "-m", "scripts.train"])
     
     if args.evaluate or args.all:
         print("Evaluating models...")
-        subprocess.run([sys.executable, "main.py"])
+        subprocess.run([sys.executable, "-m", "scripts.evaluate"])
     
     if args.visualize or args.all:
         print("Creating visualizations...")
         try:
-            from utils.visualization import plot_rating_distribution, plot_model_comparison, plot_user_activity
-            from data_processing import load_data
+            from src.recommender.visualization import plot_rating_distribution, plot_model_comparison, plot_user_activity
+            from src.recommender.data import load_data
             
             ratings, _ = load_data()
             plot_rating_distribution(ratings)
@@ -61,7 +61,7 @@ def main():
         print("Starting web interface...")
         if not os.path.exists('models/cf_model.pkl') or not os.path.exists('models/hybrid_model.pkl'):
             print("Models not found. Training models first...")
-            subprocess.run([sys.executable, "save_models.py"])
+            subprocess.run([sys.executable, "-m", "scripts.train"])
         
         try:
             # Use the custom port
@@ -71,7 +71,7 @@ def main():
             # Set environment variable for Flask to use the specified port
             os.environ['FLASK_RUN_PORT'] = str(port)
             
-            subprocess.run([sys.executable, "app.py"])
+            subprocess.run([sys.executable, "-m", "web.app"])
         except KeyboardInterrupt:
             print("Web interface stopped.")
 

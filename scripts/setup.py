@@ -14,13 +14,12 @@ def setup_project_structure():
     directories = [
         'data',                  # Raw data files
         'models',                # Saved model files
-        'static',                # Static files
-        'static/images',         # Generated plots and images
-        'static/css',            # CSS files
-        'static/js',             # JavaScript files
-        'templates',             # HTML templates
+        'web/static',            # Static files
+        'web/static/images',     # Generated plots and images
+        'web/static/css',        # CSS files
+        'web/static/js',         # JavaScript files
+        'web/templates',         # HTML templates
         'logs',                  # Log files
-        'utils',                 # Utility scripts
         'notebooks'              # Jupyter notebooks
     ]
     

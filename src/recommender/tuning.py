@@ -1,7 +1,7 @@
 import pandas as pd
 import numpy as np
-from recommendation_models import CollaborativeFiltering, HybridRecommender
-from evaluation import evaluate_recommendations
+from src.recommender.models import CollaborativeFiltering, HybridRecommender
+from src.recommender.evaluation import evaluate_recommendations
 
 def tune_collaborative_filtering(user_item_matrix, train_data, test_data, movies):
     """Find optimal number of neighbors for collaborative filtering"""

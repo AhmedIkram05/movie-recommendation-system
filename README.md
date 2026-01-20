@@ -11,6 +11,13 @@ This project implements a comprehensive movie recommendation system using the Mo
 - **Machine Learning**: scikit-Learn, SciPy
 - **Visualization**: Matplotlib, Seaborn
 
+## 📂 Project Structure
+
+- **`web/`**: Contains the Flask application (`app.py`), templates, and static assets.
+- **`src/`**: Core logic including data processing (`src.recommender.data`), models, and evaluation.
+- **`scripts/`**: Executable scripts for identifying dependencies, training, and testing.
+- **`models/`**: Directory where trained model files (`.pkl`) are stored.
+
 ## 📊 Features
 
 - **Collaborative Filtering**: Recommends movies based on user similarity patterns and past ratings.
@@ -26,40 +33,38 @@ The models were evaluated using standard metrics like Hit Rate and Precision@k:
 - **Collaborative Filtering**: Achieved ~78% hit rate and ~0.22 precision@10.
 - **Hybrid Model**: Achieved ~74% hit rate and ~0.23 precision@10.
 
-## 🧪 How to Run
+## 🏃‍♂️ How to Run
 
-1. **Clone the repository**
+### 1. Setup Environment
 
-   ```bash
-   git clone https://github.com/AhmedIkram05/movie-recommendation-system.git
-   cd movie-recommendation-system
-   ```
+Clone the repository and install the required dependencies:
 
-2. **Install dependencies**
+```bash
+git clone https://github.com/AhmedIkram05/movie-recommendation-system.git
+cd movie-recommendation-system
+pip install -r requirements.txt
+```
 
-   ```bash
-   pip install -r requirements.txt
-   ```
+### 2. Download Data & Train Models
 
-3. **Download Data & Train Models**
-   You can do this in one step using the runner script:
+You can do this in one step using the runner script:
 
-   ```bash
-   python run.py --download --train
-   ```
+```bash
+python3 run.py --download --train
+```
 
-   *Note: This will download the MovieLens dataset and train the models, saving them to the `models/` directory.*
+*Note: This will download the MovieLens dataset and train the models, saving them to the `models/` directory.*
 
-4. **Run the Web Interface**
+### 3. Run the Web Interface
 
-   ```bash
-   python run.py --web
-   ```
+```bash
+python3 run.py --web
+```
 
-   Open your browser and navigate to `http://localhost:8080` to use the recommender.
+Open your browser and navigate to `http://localhost:8080` to use the recommender.
 
 ## 🛠️ Advanced Usage
 
-- **Evaluate Models**: `python run.py --evaluate`
-- **Generate Visualizations**: `python run.py --visualize`
-- **Clean Temporary Files**: `python run.py --clean`
+- **Evaluate Models**: `python3 run.py --evaluate`
+- **Generate Visualizations**: `python3 run.py --visualize`
+- **Clean Temporary Files**: `python3 run.py --clean`

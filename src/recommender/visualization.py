@@ -8,7 +8,7 @@ def ensure_dir(directory):
     if not os.path.exists(directory):
         os.makedirs(directory)
 
-def plot_rating_distribution(ratings, save_path='static/images'):
+def plot_rating_distribution(ratings, save_path='web/static/images'):
     """Plot distribution of ratings."""
     ensure_dir(save_path)
     
@@ -25,7 +25,7 @@ def plot_rating_distribution(ratings, save_path='static/images'):
     
     return file_path
 
-def plot_user_activity(ratings, save_path='static/images'):
+def plot_user_activity(ratings, save_path='web/static/images'):
     """Plot user activity (number of ratings per user)."""
     ensure_dir(save_path)
     
@@ -44,7 +44,7 @@ def plot_user_activity(ratings, save_path='static/images'):
     
     return file_path
 
-def plot_model_comparison(metrics_dict, save_path='static/images'):
+def plot_model_comparison(metrics_dict, save_path='web/static/images'):
     """Plot comparison of model metrics."""
     ensure_dir(save_path)
     

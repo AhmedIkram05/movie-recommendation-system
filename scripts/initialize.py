@@ -8,13 +8,13 @@ def main():
     
     # Run setup_project.py to create directory structure
     print("\n1. Setting up project structure...")
-    subprocess.run([sys.executable, "setup_project.py"])
+    subprocess.run([sys.executable, "-m", "scripts.setup"])
     
     # Download data if needed
     print("\n2. Checking data availability...")
     if not os.path.exists('data/ml-latest-small/movies.csv'):
         print("   Data not found. Downloading dataset...")
-        subprocess.run([sys.executable, "download_data.py"])
+        subprocess.run([sys.executable, "-m", "scripts.download"])
     else:
         print("   Data already exists.")
     
@@ -22,7 +22,7 @@ def main():
     print("\n3. Checking model availability...")
     if not os.path.exists('models/cf_model.pkl') or not os.path.exists('models/hybrid_model.pkl'):
         print("   Models not found. Training models...")
-        subprocess.run([sys.executable, "save_models.py"])
+        subprocess.run([sys.executable, "-m", "scripts.train"])
     else:
         print("   Models already exist.")
     
