@@ -51,6 +51,23 @@ def index():
     return render_template('index.html', movies=sample_movies)
 
 
+@app.route('/api/search')
+def api_search():
+    # Ensure models are loaded
+    global movies_df
+    if movies_df is None:
+        load_models()
+        
+    query = request.args.get('q', '').lower()
+    if not query or len(query) < 2:
+        return jsonify([])
+    
+    # Filter movies by title
+    mask = movies_df['title'].str.lower().str.contains(query)
+    results = movies_df[mask].head(10)[['movieId', 'title']].to_dict('records')
+    return jsonify(results)
+
+
 @app.route('/api/recommend', methods=['POST'])
 def api_recommend():
     # Ensure models are loaded
