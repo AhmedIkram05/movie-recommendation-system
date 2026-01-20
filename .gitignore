@@ -1,11 +1,7 @@
 /models
-/__pycache__
+__pycache__/
 /.venv
 /venv
 .env
 .DS_Store
 /.github
-/utils/__pycache__
-/recsys/__pycache__
-/recsys/services/__pycache__
-/scripts/__pycache__
