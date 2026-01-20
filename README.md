@@ -1,8 +1,12 @@
-# AI Movie Recommendation System
+# CineMatch
 
 ## 🚀 Overview
 
 This project implements a comprehensive movie recommendation system using the MovieLens dataset. It explores various recommendation techniques including collaborative filtering, content-based filtering, and hybrid approaches to provide personalized movie suggestions. The system includes a Flask-based web interface for users to interact with the recommendations and visualize the underlying data.
+
+## 📸 Screenshot
+
+![CineMatch AI UI](web/static/images/home.png)
 
 ## 🧠 Tech Stack
 
