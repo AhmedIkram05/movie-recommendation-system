@@ -17,12 +17,15 @@
 ![CineMatch Web Interface](web/static/images/demo-video.gif)
 
 ### Model Evaluation - Precision@10, Recall@10 and Hit Rate across Collaborative and Hybrid approaches
+
 ![Model Comparison](web/static/images/model_comparison.png)
 
 ### Dataset Analysis - Rating distribution across 100K MovieLens ratings (0.5–5.0 scale)
+
 ![Ratings Distribution](web/static/images/ratings_distribution.png)
 
 ### Dataset Analysis - Ratings per user distribution, showing the power-law activity skew that motivates cold-start handling
+
 ![User Activity](web/static/images/user_activity.png)
 > The majority of users have fewer than 100 ratings — precisely the cold-start scenario where collaborative filtering degrades and the hybrid model's content-based component compensates.
 
@@ -53,16 +56,19 @@ The recommendation strategy is **injected as a dependency** into the API layer -
 ## Recommendation Approaches
 
 ### 1. Collaborative Filtering
+
 User-based and item-based similarity via matrix factorisation on the MovieLens ratings matrix. Identifies users with similar rating patterns and recommends movies those users rated highly that the target user hasn't seen. Effective for users with sufficient rating history.
 
 **Limitation:** Fails for new users with no rating history — the cold-start problem.
 
 ### 2. Content-Based Filtering
+
 Recommends movies with similar attributes (genres, tags, metadata) to movies a user has already rated positively. Operates entirely on item features - no user history required.
 
 **Limitation:** Tends toward over-specialisation - recommends more of the same rather than surfacing discovery.
 
 ### 3. Hybrid Model
+
 Combines collaborative and content-based signals with a weighted combination strategy. When collaborative filtering lacks sufficient user history, the content-based component compensates - directly addressing the cold-start problem. The hybrid weighting was informed by systematic evaluation across both approaches rather than set arbitrarily.
 
 ---
@@ -84,6 +90,7 @@ Models evaluated on a held-out test split of the MovieLens dataset using Hit Rat
 ## Design Decisions
 
 **Dependency-injected strategy pattern** - The recommendation algorithm is passed as a dependency to the API layer rather than hardcoded. This means:
+
 - New algorithms can be added without modifying routes or evaluation code
 - Each strategy can be benchmarked in isolation under identical conditions
 - The evaluation pipeline runs the same metrics code against all three models, ensuring fair comparison
@@ -97,6 +104,7 @@ Models evaluated on a held-out test split of the MovieLens dataset using Hit Rat
 ## Getting Started
 
 ### Prerequisites
+
 - Python 3.8+
 - pip
 
